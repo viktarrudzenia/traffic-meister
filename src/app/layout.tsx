@@ -5,6 +5,7 @@ import ContentWrapper from '@/layout/ContentWrapper';
 import AppWrapper from '@/layout/AppWrapper';
 import Header from '@/layout/Header';
 import Footer from '@/layout/Footer';
+import TmErrorBoundary from '@/shared/components/TmErrorBoundary';
 
 import '@/shared/styles/globals.scss';
 
