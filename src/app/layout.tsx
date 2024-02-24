@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
+import ContentWrapper from '@/layout/ContentWrapper';
+import AppWrapper from '@/layout/AppWrapper';
+import Header from '@/layout/Header';
+import Footer from '@/layout/Footer';
+
 import '@/shared/styles/globals.scss';
 
 const roboto = Roboto({
@@ -20,7 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <AppWrapper>
+          <Header />
+          <ContentWrapper>{children}</ContentWrapper>
+          <Footer />
+        </AppWrapper>
+      </body>
     </html>
   );
 }

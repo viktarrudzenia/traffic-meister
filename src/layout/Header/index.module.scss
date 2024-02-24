@@ -1,0 +1,27 @@
+.Header__wrapper {
+  height: 60px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #cfcfcf91;
+  padding: 10px 20px;
+  z-index: 1001;
+  background: inherit;
+}
+
+.Header__logoWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.Header__logoImage:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.Header__logoText {
+  display: flex;
+  align-items: center;
+}
