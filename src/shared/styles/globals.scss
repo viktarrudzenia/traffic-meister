@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: $base-font-size;
+
+  @media only screen and (max-width: $laptopBreakpoint) {
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: $tabletBreakpoint) {
+    font-size: 12px;
+  }
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
