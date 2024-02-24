@@ -8,12 +8,13 @@ interface TrafficMeisterStore {
   trafficMeisterDataError: null | AxiosError;
   trafficMeisterData: ItrafficMeisterElement[];
   filteredTrafficMeisterData: ItrafficMeisterElement[];
-  selectedElement: null;
+  selectedElement: null | ItrafficMeisterElement;
   reset: () => void;
   setTrafficMeisterDataError: (error: null | AxiosError) => void;
   setIsTrafficMeisterDataLoading: (isLoading: boolean) => void;
   setTrafficMeisterData: (newTrafficMeisterData: ItrafficMeisterElement[]) => void;
   setFilteredTrafficMeisterData: (newFilteredTrafficMeisterData: ItrafficMeisterElement[]) => void;
+  setSelectedElement: (newSelectedElement: null | ItrafficMeisterElement) => void;
 }
 
 interface TrafficMeisterStoreState {
@@ -21,7 +22,7 @@ interface TrafficMeisterStoreState {
   trafficMeisterDataError: null | AxiosError;
   trafficMeisterData: ItrafficMeisterElement[];
   filteredTrafficMeisterData: ItrafficMeisterElement[];
-  selectedElement: null;
+  selectedElement: null | ItrafficMeisterElement;
 }
 
 const INITIAL_TRAFFIC_MEISTER_STORE: TrafficMeisterStoreState = {
@@ -46,4 +47,5 @@ export const useTrafficMeisterStore = create<TrafficMeisterStore>()((set) => ({
   setTrafficMeisterDataError: (error) => set(() => ({ trafficMeisterDataError: error })),
   setFilteredTrafficMeisterData: (newFilteredTrafficMeisterData) =>
     set(() => ({ filteredTrafficMeisterData: newFilteredTrafficMeisterData })),
+  setSelectedElement: (newSelectedElement) => set(() => ({ selectedElement: newSelectedElement })),
 }));

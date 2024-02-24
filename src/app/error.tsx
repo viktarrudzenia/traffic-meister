@@ -1,7 +1,6 @@
 'use client'; // Error components must be Client Components
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import { TmButton } from '@/components/shared';
 
@@ -18,7 +17,6 @@ export default function Error({
     // Log the error to an error reporting service
     console.error(error);
   }, [error]);
-  const router = useRouter();
 
   return (
     <div className={styles.Error__wrapper}>
@@ -33,10 +31,12 @@ export default function Error({
       </TmButton>
       or
       <TmButton>
-        <Link href="/">Back to Home</Link>
+        <Link className={styles.Error__link} href="/">
+          Back to Home
+        </Link>
       </TmButton>
       or
-      <TmButton onClick={() => router.refresh()}>Refresh the page</TmButton>
+      <TmButton onClick={() => window.location.reload()}>Refresh the page</TmButton>
     </div>
   );
 }

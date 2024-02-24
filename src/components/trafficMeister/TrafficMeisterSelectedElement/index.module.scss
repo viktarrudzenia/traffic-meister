@@ -4,3 +4,23 @@
   border: 1px solid rgb(180, 179, 179);
   border-radius: 10px;
 }
+
+.TrafficMeisterSelectedElement__closeBtn {
+  background: gray;
+}
+
+.TrafficMeisterSelectedElement__selectedWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 10px;
+}
+
+.TrafficMeisterSelectedElement__notSelectedWrapper {
+  width: 100%;
+  height: 100%;
+  font-size: rem(26px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
