@@ -16,13 +16,14 @@ export default function TrafficMeisterElement({
 }: TrafficMeisterElementProps) {
   const { type, brand, colors, id } = trafficMeisterElement;
   const setSelectedElement = useTrafficMeisterStore((state) => state.setSelectedElement);
+  const selectedColorForElement = useTrafficMeisterStore((state) => state.selectedColorForElement);
   const selectedElement = useTrafficMeisterStore((state) => state.selectedElement);
 
   return (
     <tr className={cn({ [styles.TrafficMeisterElement__active]: selectedElement?.id === id })}>
       <td>{type}</td>
       <td>{brand}</td>
-      <td>{colors.join(', ')}</td>
+      <td>{selectedColorForElement ? selectedColorForElement : colors.join(', ')}</td>
       <td>
         <TmButton onClick={() => setSelectedElement(trafficMeisterElement)}>Select</TmButton>
       </td>

@@ -17,7 +17,7 @@ export default function TrafficMeisterElements() {
             <tr>
               <th>Type</th>
               <th>Brand</th>
-              <th>Available Colors</th>
+              <th>Colors</th>
               <th>Action</th>
             </tr>
           </thead>

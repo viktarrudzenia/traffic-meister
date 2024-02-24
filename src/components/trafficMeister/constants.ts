@@ -8,3 +8,8 @@ export interface ItrafficMeisterElement {
   img: string;
   type: string;
 }
+
+export interface SelectOption {
+  value: string;
+  label: string;
+}

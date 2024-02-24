@@ -1,16 +1,11 @@
 'use client';
 import Select from 'react-select';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useTrafficMeisterStore } from '@/store/trafficMeister/useTrafficMeisterStore';
-import { ItrafficMeisterElement } from '../constants';
+import { ItrafficMeisterElement, SelectOption } from '../constants';
 
 import styles from './index.module.scss';
-
-interface SelectOption {
-  value: string;
-  label: string;
-}
 
 export default function TrafficMeisterFormContent() {
   const trafficMeisterData = useTrafficMeisterStore((state) => state.trafficMeisterData);
@@ -19,6 +14,9 @@ export default function TrafficMeisterFormContent() {
   );
   const setFilteredTrafficMeisterData = useTrafficMeisterStore(
     (state) => state.setFilteredTrafficMeisterData
+  );
+  const setSelectedColorForElement = useTrafficMeisterStore(
+    (state) => state.setSelectedColorForElement
   );
 
   const [vehicleOptions, setVehicleOptions] = useState<SelectOption[]>([]);
@@ -43,12 +41,19 @@ export default function TrafficMeisterFormContent() {
         value: trafficMeisterElement.brand,
         label: trafficMeisterElement.brand,
       };
-      trafficMeisterElement.colors.map((color) => {
-        colorOptionsCalculated[color] = {
-          value: color,
-          label: color,
+      if (selectedColorOption) {
+        colorOptionsCalculated[selectedColorOption.value] = {
+          value: selectedColorOption.value,
+          label: selectedColorOption.value,
         };
-      });
+      } else {
+        trafficMeisterElement.colors.map((color) => {
+          colorOptionsCalculated[color] = {
+            value: color,
+            label: color,
+          };
+        });
+      }
     });
 
     setVehicleOptions(Object.values(vehiclesOptionsCalculated));
@@ -100,6 +105,7 @@ export default function TrafficMeisterFormContent() {
         isClearable
         onChange={(option: SelectOption | null) => {
           setSelectedColorOption(option);
+          setSelectedColorForElement(option?.value || null);
         }}
       />
     </div>
