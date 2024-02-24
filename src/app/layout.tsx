@@ -5,9 +5,8 @@ import ContentWrapper from '@/layout/ContentWrapper';
 import AppWrapper from '@/layout/AppWrapper';
 import Header from '@/layout/Header';
 import Footer from '@/layout/Footer';
-import TmErrorBoundary from '@/shared/components/TmErrorBoundary';
 
-import '@/shared/styles/globals.scss';
+import '@/styles/globals.scss';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -26,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={roboto.className} suppressHydrationWarning={true}>
         <AppWrapper>
           <Header />
           <ContentWrapper>{children}</ContentWrapper>

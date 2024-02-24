@@ -1,5 +1,5 @@
-import TrafficMeisterForm from '@/components/TrafficMeisterForm';
-import TrafficMeisterSelectedElement from '@/components/TrafficMeisterSelectedElement';
+import TrafficMeisterForm from '@/components/trafficMeister/TrafficMeisterForm';
+import TrafficMeisterSelectedElement from '@/components/trafficMeister/TrafficMeisterSelectedElement';
 
 import styles from './page.module.scss';
 

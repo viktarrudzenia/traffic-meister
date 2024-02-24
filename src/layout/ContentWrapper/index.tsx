@@ -1,4 +1,4 @@
-import TmErrorBoundary from '@/shared/components/TmErrorBoundary';
+import { TmErrorBoundary } from '@/components/shared';
 
 import styles from './index.module.scss';
 

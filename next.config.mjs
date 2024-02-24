@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     sassOptions: {
-        additionalData: `@import "src/shared/styles/variables.scss"; @import "src/shared/styles/functions.scss";`,
+        additionalData: `@import "src/styles/variables.scss"; @import "src/styles/functions.scss";`,
     },
 };
 

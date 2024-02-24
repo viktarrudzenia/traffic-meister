@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import TmButton from '@/shared/components/TmButton';
+import { TmButton } from '@/components/shared';
 
 import styles from './error.module.scss';
 

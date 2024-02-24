@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import TmButton from '@/shared/components/TmButton';
+import { TmButton } from '@/components/shared';
 
 import styles from './not-found.module.scss';
 
