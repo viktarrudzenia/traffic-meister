@@ -20,7 +20,10 @@ export default function TrafficMeisterElement({
   const selectedElement = useTrafficMeisterStore((state) => state.selectedElement);
 
   return (
-    <tr className={cn({ [styles.TrafficMeisterElement__active]: selectedElement?.id === id })}>
+    <tr
+      data-testid="traffic-meister-element"
+      className={cn({ [styles.TrafficMeisterElement__active]: selectedElement?.id === id })}
+    >
       <td>{type}</td>
       <td>{brand}</td>
       <td>{selectedColorForElement ? selectedColorForElement : colors.join(', ')}</td>

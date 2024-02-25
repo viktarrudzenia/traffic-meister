@@ -133,6 +133,7 @@ export default function TrafficMeisterFormContent() {
         </div>
       </div>
       <Select
+        className="select-filter-type"
         placeholder="Select type"
         name="vehicles"
         options={vehicleOptions}
@@ -164,6 +165,7 @@ export default function TrafficMeisterFormContent() {
         }}
       />
       <Select
+        className="select-filter-brand"
         placeholder="Select brand"
         name="brands"
         options={brandOptions}
@@ -195,6 +197,7 @@ export default function TrafficMeisterFormContent() {
         }}
       />
       <Select
+        className="select-filter-color"
         placeholder="Select color"
         name="colors"
         options={colorOptions}

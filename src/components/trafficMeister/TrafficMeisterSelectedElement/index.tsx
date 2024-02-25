@@ -14,7 +14,10 @@ export default function TrafficMeisterSelectedElement() {
   return (
     <aside className={styles.TrafficMeisterSelectedElement__wrapper}>
       {selectedElement ? (
-        <div className={styles.TrafficMeisterSelectedElement__selectedWrapper}>
+        <div
+          data-testid="vehicle-selected"
+          className={styles.TrafficMeisterSelectedElement__selectedWrapper}
+        >
           <div>Type: {selectedElement?.type}</div>
           <div>Brand: {selectedElement?.brand}</div>
           {selectedColorForElement && <div>Selected color: {selectedColorForElement}</div>}
@@ -26,7 +29,7 @@ export default function TrafficMeisterSelectedElement() {
             width="300"
             height="200"
           />
-          <div>
+          <div data-testid="unselect-vehicle">
             <TmButton
               additionalClassName={styles.TrafficMeisterSelectedElement__closeBtn}
               onClick={() => setSelectedElement(null)}
@@ -36,7 +39,10 @@ export default function TrafficMeisterSelectedElement() {
           </div>
         </div>
       ) : (
-        <div className={styles.TrafficMeisterSelectedElement__notSelectedWrapper}>
+        <div
+          data-testid="vehicle-not-selected"
+          className={styles.TrafficMeisterSelectedElement__notSelectedWrapper}
+        >
           Please select any Vehicle
         </div>
       )}
