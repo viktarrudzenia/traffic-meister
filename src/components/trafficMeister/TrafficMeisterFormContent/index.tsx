@@ -1,11 +1,22 @@
 'use client';
 import Select from 'react-select';
 import { useState, useEffect } from 'react';
+import cn from 'classnames';
 
 import { useTrafficMeisterStore } from '@/store/trafficMeister/useTrafficMeisterStore';
+import { TmButton } from '@/components/shared';
 import { ItrafficMeisterElement, SelectOption } from '../constants';
 
 import styles from './index.module.scss';
+
+enum FILTERS_LOGIC_VARIANTS {
+  FULL_FILTER = 'Full filter',
+  FILTER_EXCEPT_CURRENT_OPTION = 'Filter without itself select',
+}
+const filtersLogicVariants = [
+  FILTERS_LOGIC_VARIANTS.FULL_FILTER,
+  FILTERS_LOGIC_VARIANTS.FILTER_EXCEPT_CURRENT_OPTION,
+];
 
 export default function TrafficMeisterFormContent() {
   const trafficMeisterData = useTrafficMeisterStore((state) => state.trafficMeisterData);
@@ -17,6 +28,10 @@ export default function TrafficMeisterFormContent() {
   );
   const setSelectedColorForElement = useTrafficMeisterStore(
     (state) => state.setSelectedColorForElement
+  );
+
+  const [selectedFiltersLogic, setSelectedFiltersLogic] = useState<FILTERS_LOGIC_VARIANTS>(
+    FILTERS_LOGIC_VARIANTS.FULL_FILTER
   );
 
   const [vehicleOptions, setVehicleOptions] = useState<SelectOption[]>([]);
@@ -80,6 +95,27 @@ export default function TrafficMeisterFormContent() {
 
   return (
     <div className={styles.TrafficMeisterFormContent__wrapper}>
+      <div className={styles.TrafficMeisterFormContent__FiltersHeaderWrapper}>
+        <div>Filters logic:</div>
+        <div className={styles.TrafficMeisterFormContent__FiltersVariantsWrapper}>
+          {filtersLogicVariants.map((filterLogicVariant) => (
+            <TmButton
+              key={filterLogicVariant}
+              additionalClassName={cn(styles.TrafficMeisterFormContent__logicVariantBtn, {
+                [styles.TrafficMeisterFormContent__logicVariantBtnActive]:
+                  filterLogicVariant === selectedFiltersLogic,
+              })}
+              onClick={() => {
+                if (filterLogicVariant !== selectedFiltersLogic) {
+                  setSelectedFiltersLogic(filterLogicVariant);
+                }
+              }}
+            >
+              {filterLogicVariant}
+            </TmButton>
+          ))}
+        </div>
+      </div>
       <Select
         placeholder="Select type"
         name="vehicles"
@@ -87,6 +123,27 @@ export default function TrafficMeisterFormContent() {
         isClearable
         onChange={(option: SelectOption | null) => {
           setSelectedVehicleOption(option);
+        }}
+        onMenuOpen={() => {
+          if (selectedFiltersLogic === FILTERS_LOGIC_VARIANTS.FILTER_EXCEPT_CURRENT_OPTION) {
+            const vehiclesOptionsCalculated: { [key: string]: SelectOption } = {};
+            trafficMeisterData.forEach((trafficMeisterElement: ItrafficMeisterElement) => {
+              if (
+                (selectedBrandOption &&
+                  selectedBrandOption.value !== trafficMeisterElement.brand) ||
+                (selectedColorOption &&
+                  !trafficMeisterElement.colors.includes(selectedColorOption.value))
+              ) {
+                return;
+              }
+              vehiclesOptionsCalculated[trafficMeisterElement.type] = {
+                value: trafficMeisterElement.type,
+                label: trafficMeisterElement.type,
+              };
+            });
+
+            setVehicleOptions(Object.values(vehiclesOptionsCalculated));
+          }
         }}
       />
       <Select
@@ -97,6 +154,27 @@ export default function TrafficMeisterFormContent() {
         onChange={(option: SelectOption | null) => {
           setSelectedBrandOption(option);
         }}
+        onMenuOpen={() => {
+          if (selectedFiltersLogic === FILTERS_LOGIC_VARIANTS.FILTER_EXCEPT_CURRENT_OPTION) {
+            const brandOptionsCalculated: { [key: string]: SelectOption } = {};
+            trafficMeisterData.forEach((trafficMeisterElement: ItrafficMeisterElement) => {
+              if (
+                (selectedVehicleOption &&
+                  selectedVehicleOption.value !== trafficMeisterElement.type) ||
+                (selectedColorOption &&
+                  !trafficMeisterElement.colors.includes(selectedColorOption.value))
+              ) {
+                return;
+              }
+              brandOptionsCalculated[trafficMeisterElement.brand] = {
+                value: trafficMeisterElement.brand,
+                label: trafficMeisterElement.brand,
+              };
+            });
+
+            setBrandOptions(Object.values(brandOptionsCalculated));
+          }
+        }}
       />
       <Select
         placeholder="Select color"
@@ -106,6 +184,28 @@ export default function TrafficMeisterFormContent() {
         onChange={(option: SelectOption | null) => {
           setSelectedColorOption(option);
           setSelectedColorForElement(option?.value || null);
+        }}
+        onMenuOpen={() => {
+          if (selectedFiltersLogic === FILTERS_LOGIC_VARIANTS.FILTER_EXCEPT_CURRENT_OPTION) {
+            const colorOptionsCalculated: { [key: string]: SelectOption } = {};
+            trafficMeisterData.forEach((trafficMeisterElement: ItrafficMeisterElement) => {
+              if (
+                (selectedVehicleOption &&
+                  selectedVehicleOption.value !== trafficMeisterElement.type) ||
+                (selectedBrandOption && selectedBrandOption.value !== trafficMeisterElement.brand)
+              ) {
+                return;
+              }
+              trafficMeisterElement.colors.map((color) => {
+                colorOptionsCalculated[color] = {
+                  value: color,
+                  label: color,
+                };
+              });
+            });
+
+            setColorOptions(Object.values(colorOptionsCalculated));
+          }
         }}
       />
     </div>
