@@ -1,5 +1,10 @@
 .TrafficMeisterVehicles__wrapper {
   overflow: auto;
+  max-height: 700px;
+
+  @media (max-height: $minimumHeightForOneScreen) {
+    max-height: 400px;
+  }
 }
 
 .TrafficMeisterVehicles__table {
@@ -11,6 +16,10 @@
   th {
     border: 1px solid #ddd;
     padding: 5px;
+
+    @media (max-width: $tabletBreakpoint) {
+      font-size: 10px;
+    }
   }
 
   tr:nth-child(even) {

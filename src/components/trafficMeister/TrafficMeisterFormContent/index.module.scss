@@ -3,6 +3,11 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
+
+  @media (max-height: $minimumHeightForOneScreen) {
+    position: sticky;
+    top: 0;
+  }
 }
 
 .TrafficMeisterFormContent__FiltersHeaderWrapper {
@@ -18,6 +23,10 @@
 .TrafficMeisterFormContent__logicVariantBtn {
   padding: 5px;
   background: gray;
+
+  @media (max-width: $tabletBreakpoint) {
+    font-size: 10px;
+  }
 
   &Active {
     background: green;

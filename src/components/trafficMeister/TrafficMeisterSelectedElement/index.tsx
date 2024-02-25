@@ -19,7 +19,13 @@ export default function TrafficMeisterSelectedElement() {
           <div>Brand: {selectedElement?.brand}</div>
           {selectedColorForElement && <div>Selected color: {selectedColorForElement}</div>}
           <div>All available colors: {selectedElement?.colors.join(', ')}</div>
-          <Image src={selectedElement.img} alt="vehicle" width="300" height="200" />
+          <Image
+            className={styles.TrafficMeisterSelectedElement__image}
+            src={selectedElement.img}
+            alt="vehicle"
+            width="300"
+            height="200"
+          />
           <div>
             <TmButton
               additionalClassName={styles.TrafficMeisterSelectedElement__closeBtn}
