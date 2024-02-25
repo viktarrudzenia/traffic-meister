@@ -1,5 +1,9 @@
 # Traffic Meister
 
+## Link to application
+
+[https://traffic-meister-lemon.vercel.app/](https://traffic-meister-lemon.vercel.app/)
+
 ## Stack
 
 [Next.js](https://www.npmjs.com/package/next) 14 (App Router approach)

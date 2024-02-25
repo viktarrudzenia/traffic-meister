@@ -13,7 +13,7 @@ table > tbody > tr.TrafficMeisterElement__active {
 
 .TrafficMeisterSelectButton,
 .TrafficMeisterSelectButton__active {
-  min-width: 95px;
+  width: 95px;
   padding: 8px 0;
 
   @media (max-width: $tabletBreakpoint) {
