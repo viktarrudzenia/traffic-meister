@@ -13,7 +13,7 @@ export default function TmButton({ children, onClick, additionalClassName }: TmB
   return (
     <button
       type="button"
-      className={cn(styles.Button__button, additionalClassName)}
+      className={cn(styles.TmButton__button, additionalClassName)}
       onClick={onClick}
     >
       {children}

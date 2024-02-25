@@ -1,3 +1,35 @@
-.TrafficMeisterElement__active {
-  background-color: #6fe09e !important;
+.TrafficMeisterElement:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+// to override the above style
+table > tbody > tr.TrafficMeisterElement__active {
+  background-color: #0080003d;
+
+  &:hover {
+    background-color: #0080003d;
+  }
+}
+
+.TrafficMeisterSelectButton,
+.TrafficMeisterSelectButton__active {
+  min-width: 95px;
+  padding: 8px 0;
+
+  @media (max-width: $tabletBreakpoint) {
+    width: 65px;
+  }
+}
+
+.TrafficMeisterSelectButton__active {
+  background-color: gray;
+
+  &:hover {
+    opacity: 1;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    transform: none;
+  }
 }

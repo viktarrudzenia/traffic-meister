@@ -22,11 +22,7 @@
     }
   }
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  tr:hover {
+  tbody > tr:hover {
     background-color: #ddd;
   }
 
@@ -34,7 +30,10 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04aa6d;
-    color: white;
+    color: black;
+  }
+
+  .TrafficMeisterVehicles__tableFooter {
+    font-weight: bold;
   }
 }

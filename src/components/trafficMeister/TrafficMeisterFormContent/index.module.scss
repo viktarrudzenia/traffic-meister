@@ -12,6 +12,7 @@
 
 .TrafficMeisterFormContent__FiltersHeaderWrapper {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .TrafficMeisterFormContent__logicVariantBtn {
-  padding: 5px;
+  padding: 8px;
   background: gray;
 
   @media (max-width: $tabletBreakpoint) {
@@ -30,5 +31,14 @@
 
   &Active {
     background: green;
+
+    &:active {
+      transform: none;
+    }
+
+    &:hover {
+      opacity: 1;
+      cursor: default;
+    }
   }
 }

@@ -1,6 +1,4 @@
 'use client';
-import cn from 'classnames';
-
 import { TmButton } from '@/components/shared';
 import { useTrafficMeisterStore } from '@/store/trafficMeister/useTrafficMeisterStore';
 import { ItrafficMeisterElement } from '../constants';
@@ -22,13 +20,26 @@ export default function TrafficMeisterElement({
   return (
     <tr
       data-testid="traffic-meister-element"
-      className={cn({ [styles.TrafficMeisterElement__active]: selectedElement?.id === id })}
+      className={
+        selectedElement?.id === id
+          ? styles.TrafficMeisterElement__active
+          : styles.TrafficMeisterElement
+      }
     >
       <td>{type}</td>
       <td>{brand}</td>
       <td>{selectedColorForElement ? selectedColorForElement : colors.join(', ')}</td>
       <td>
-        <TmButton onClick={() => setSelectedElement(trafficMeisterElement)}>Select</TmButton>
+        <TmButton
+          onClick={() => setSelectedElement(trafficMeisterElement)}
+          additionalClassName={
+            selectedElement?.id === id
+              ? styles.TrafficMeisterSelectButton__active
+              : styles.TrafficMeisterSelectButton
+          }
+        >
+          {selectedElement?.id === id ? 'Selected' : 'Select'}
+        </TmButton>
       </td>
     </tr>
   );

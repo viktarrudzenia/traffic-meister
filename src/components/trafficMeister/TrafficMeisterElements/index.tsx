@@ -29,7 +29,7 @@ export default function TrafficMeisterElements() {
               />
             ))}
           </tbody>
-          <tfoot>
+          <tfoot className={styles.TrafficMeisterVehicles__tableFooter}>
             <tr>
               <th scope="row" colSpan={2}>
                 Total selections
